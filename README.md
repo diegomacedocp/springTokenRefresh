@@ -1,6 +1,8 @@
 # springTokenRefresh
 Spring Security com JSON Web Token e Refresh Token
 
+OBS. AINDA EM DESENVOLVIMENTO
+
 O que foi aplicado no projeto:
   * JSON Web Token (JWT).
   * Authentication.
