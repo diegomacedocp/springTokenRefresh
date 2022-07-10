@@ -1,6 +1,8 @@
 package com.diegomacedo.springTokenRefresh.filter;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,7 +68,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 		
 		String refresh_token = JWT.create()
 				.withSubject(user.getUsername())
-				.withExpiresAt(new Date(System.currentTimeMillis() + 30 * 60 * 1000))
+				.withExpiresAt(new Date(System.currentTimeMillis() + 5 * 60 * 1000))
 				.withIssuer(request.getRequestURI().toString())
 				.sign(algorithm);		
 				
@@ -74,7 +76,8 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 		//response.setHeader("refresh_token", refresh_token);
 		
 		Map<String, String> tokens = new HashMap<>();
-		tokens.put("acess_token",acess_token); 
+		tokens.put("username",user.getUsername());
+		tokens.put("acess_token",acess_token);
 		tokens.put("refresh_token",refresh_token);
 		
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);

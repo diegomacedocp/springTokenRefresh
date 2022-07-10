@@ -83,7 +83,8 @@ public class UserResource {
 						.sign(algorithm);
 				
 				Map<String, String> tokens = new HashMap<>();
-				tokens.put("acess_token",acess_token); 
+				tokens.put("username",user.getUsername());
+				tokens.put("acess_token",acess_token);
 				tokens.put("refresh_token",refresh_token);
 				
 				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
